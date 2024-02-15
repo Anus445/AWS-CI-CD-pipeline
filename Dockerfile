@@ -10,6 +10,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 3030
+EXPOSE 3040
 
 CMD ["pm2-runtime", "server.js"]
