@@ -6,6 +6,17 @@ app.get('/api/get',(req,res) => {
     res.send({message:"Hey Admin! CI/CD Pipeline is running"})
 })
 
-app.listen(8000,() => {
-    console.log("Listening to 8030");
+
+app.get('/api/get_user_details',(req,res) => {
+    res.send({
+        user:{
+            name:"Anus Khan",
+            age:24
+            contact:77634352
+        }
+    })
+});
+
+app.listen(3040,() => {
+    console.log("Listening to 3040");
 })
