@@ -25,5 +25,5 @@ jobs:
 
     # Add a step to restart Docker container
     - name: Restart Docker container
-      run: ssh root@172.31.87.64 'docker restart anuskhan'
+      run: ssh root@34.201.43.68 'docker restart anuskhan'
       # Replace 'user' with your username, 'your-ubuntu-server-ip' with your server's IP address, and 'your-container-name' with the name of your Docker container
