@@ -1,6 +1,3 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
 name: Node.js CI
 
 on:
@@ -26,4 +23,7 @@ jobs:
         cache: 'npm'
     - run: npm ci
 
-    
+    # Add a step to restart Docker container
+    - name: Restart Docker container
+      run: ssh ubuntu@172.31.87.64'sudo docker restart anuskhan'
+      # Replace 'user' with your username, 'your-ubuntu-server-ip' with your server's IP address, and 'your-container-name' with the name of your Docker container
