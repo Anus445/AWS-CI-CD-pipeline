@@ -11,8 +11,8 @@ app.get('/api/get_user_details',(req,res) => {
     res.send({
         user:{
             name:"AnusKhan",
-            age:24
-            contact:77634352
+            age:24,
+            contact:7763435
         }
     })
 });
