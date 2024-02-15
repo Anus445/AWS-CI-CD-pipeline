@@ -3,7 +3,7 @@ const app = express();
 
 
 app.get('/api/get',(req,res) => {
-    res.send({message:"Hey Admin! CI/CD Pipeline is running on AWS ec2"})
+    res.send({message:"Hey Admin! CI/CD Pipeline is running on ec2"})
 })
 
 
