@@ -29,7 +29,7 @@ jobs:
       run: |
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@172.31.87.68
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@172.31.46.70
           sudo docker stop anus-container
           sudo docker rm anus-container
           sudo docker build -t my-node-app .
