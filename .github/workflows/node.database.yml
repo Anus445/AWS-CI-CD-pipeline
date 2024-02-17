@@ -1,4 +1,4 @@
-name: Node.js and MySQL CI
+name: Node.js CI
 
 on:
   push:
@@ -11,18 +11,8 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 20.x ]
+        node-version: [20.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    services:
-      mysql:
-        image: mysql:latest
-        env:
-          MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: mydatabase
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
     - uses: actions/checkout@v3
@@ -43,4 +33,4 @@ jobs:
           sudo docker stop anus-container
           sudo docker rm anus-container
           sudo docker build -t my-node-app .
-          sudo docker run -d -p 3040:3040 --name anus-container --link=mysql:mysql my-node-app
+          sudo docker run -d -p 3040:3040 --name anus-container my-node-app
