@@ -37,5 +37,5 @@ jobs:
           sudo docker stop mysql-container
           sudo docker rm mysql-container
           sudo docker build -t mysql-server .
-          sudo docker run -d -p 3306:3306 --name mysql-container mysql-server
+          sudo docker run -d -p 3306:3306 --name mysql-container mysql-server 
 
