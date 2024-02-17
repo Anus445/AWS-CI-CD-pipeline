@@ -37,5 +37,4 @@ jobs:
           sudo docker restart anus-container
           sudo docker build -t mysql-server -f Dockerfile.mysql .
           sudo docker run -d -p 3306:3306 --name mysql-container mysql-server
-          sudo docker restart mysql-container
 
