@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm install
 
 # Expose ports for Node.js and MySQL
-EXPOSE 3070 3306
+EXPOSE 3040 3306
 
 # Copy application files
 COPY . .
