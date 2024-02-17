@@ -1,15 +1,20 @@
 FROM node:latest
 
+# Install MySQL client
+RUN apt-get update && apt-get install -y mysql-client
+
+# Set working directory
 WORKDIR /usr/src/app
 
+# Copy package.json and install dependencies
 COPY package*.json ./
-
-RUN npm install pm2 -g
-
 RUN npm install
 
+# Expose ports for Node.js and MySQL
+EXPOSE 3070 3306
+
+# Copy application files
 COPY . .
 
-EXPOSE 3040
-
-CMD ["pm2-runtime", "server.js"]
+# Start MySQL service
+CMD service mysql start && pm2-runtime server.js
