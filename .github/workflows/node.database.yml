@@ -12,6 +12,7 @@ jobs:
     strategy:
       matrix:
         node-version: [20.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v3
@@ -22,19 +23,14 @@ jobs:
         cache: 'npm'
     - run: npm ci
     
-    # Start MySQL Docker container
-    - name: Start MySQL Container
-      run: |
-        sudo docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
-    
     - name: SSH into server and update Docker container
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       run: |
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@172.31.87.68 
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa root@172.31.87.68
           sudo docker stop anus-container
           sudo docker rm anus-container
           sudo docker build -t my-node-app .
-          sudo docker run -d -p 3070:3070 --name anus-container --link mysql-container:mysql my-node-app
+          sudo docker run -d -p 3070:3070 --name anus-container my-node-app
