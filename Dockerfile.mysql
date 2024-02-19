@@ -3,7 +3,7 @@ FROM mysql
 
 # Set the root password for MySQL
 ENV:
-  MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
+  MYSQL_ROOT_PASSWORD: ${{ secrets.MY_SECRETS }}
 
 # Expose the MySQL port
 EXPOSE 3306
