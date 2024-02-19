@@ -2,8 +2,8 @@
 FROM mysql
 
 # Set the root password for MySQL
-ENV:
-  MYSQL_ROOT_PASSWORD: ${{ secrets.MY_SECRETS }}
+ARG MYSQL_ROOT_PASSWORD
+ENV MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
 
 # Expose the MySQL port
 EXPOSE 3306
