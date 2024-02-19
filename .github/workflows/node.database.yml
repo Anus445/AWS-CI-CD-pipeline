@@ -26,6 +26,7 @@ jobs:
     - name: SSH into server and update Docker container
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
       run: |
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
@@ -35,6 +36,5 @@ jobs:
           sudo docker build -t my-node-app .
           sudo docker run -d -p 3040:3040 --name anus-container my-node-app
           sudo docker restart anus-container
-          sudo docker build -t mysql-server -f Dockerfile.mysql .
-          sudo docker run -d -p 3306:3306 --name mysql-container mysql-server 
-
+          sudo docker build --build-arg MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD -t mysql-server -f Dockerfile.mysql .
+          sudo docker run -d -p 3306:3306 --name mysql-container mysql-server
